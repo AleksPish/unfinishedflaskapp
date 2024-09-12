@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  python-flaskapp:
+    container_name: composed-flaskapp
+    image: trainingaleks/python-flaskapp
+    build: ./
+    ports:
+    - 5000:5000
