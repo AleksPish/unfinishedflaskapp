@@ -1,7 +1,10 @@
 pipeline {
     agent any
+    environment {
+        DOCKER_LOGIN=credentials('DOCKER_LOGIN')
+    }
     stages {
-        stage('Build Image') {
+        stage('test stage') {
             steps {
                 sh 'echo "no need to build"'
             }
@@ -12,6 +15,10 @@ pipeline {
                 sh 'sudo docker-compose rm'
                 sh 'sudo docker-compose up -d'
             }
+        }
+        stage('push build') {
+            sh 'sudo docker login -u ${DOCKER_LOGIN_USR} -p ${DOCKERLOGIN_PSW}'
+            sh 'sudo docker-compose push'
         }
     }
 }
