@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('test stage') {
             steps {
-                sh 'echo "no need to build"'
+                sh 'echo "no need to build again"'
             }
         }
         stage('Deploy container') {
