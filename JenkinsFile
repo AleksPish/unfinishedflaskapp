@@ -17,8 +17,10 @@ pipeline {
             }
         }
         stage('push build') {
+            steps {
             sh 'sudo docker login -u ${DOCKER_LOGIN_USR} -p ${DOCKERLOGIN_PSW}'
             sh 'sudo docker-compose push'
+            }
         }
     }
 }
